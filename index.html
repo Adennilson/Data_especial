@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nossa História 💕</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background: #121212;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 40px 20px;
+            overflow-x: hidden;
+        }
+
+        .coração {
+            position: fixed;
+            font-size: 20px;
+            color: #ff4d6d;
+            opacity: 0;
+            animation: flutuar 8s ease-in-out infinite;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        @keyframes flutuar {
+            0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+            10% { opacity: 0.8; }
+            90% { opacity: 0.8; }
+            100% { transform: translateY(-100px) rotate(720deg); opacity: 0; }
+        }
+
+        .container {
+            background: #1e1e1e;
+            border-radius: 24px;
+            padding: 50px 35px;
+            box-shadow: 0 0 40px rgba(255, 77, 108, 0.1);
+            text-align: center;
+            max-width: 520px;
+            width: 100%;
+            z-index: 10;
+            animation: aparecer 1s ease-out;
+            border: 1px solid rgba(255, 77, 108, 0.15);
+        }
+
+        @keyframes aparecer {
+            from { transform: translateY(30px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .foto-perfil {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin: 0 auto 25px;
+            border: 4px solid #ff4d6d;
+            box-shadow: 0 0 20px rgba(255, 77, 108, 0.4);
+            animation: brilho 3s ease-in-out infinite;
+            transition: transform 0.4s ease;
+        }
+
+        .foto-perfil:hover {
+            transform: scale(1.05);
+        }
+
+        .foto-perfil img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        @keyframes brilho {
+            0%, 100% { box-shadow: 0 0 20px rgba(255, 77, 108, 0.4); }
+            50% { box-shadow: 0 0 35px rgba(255, 77, 108, 0.6); }
+        }
+
+        h1 {
+            font-size: 2rem;
+            color: #ff4d6d;
+            margin-bottom: 8px;
+            animation: pulsar 2s ease-in-out infinite;
+        }
+
+        @keyframes pulsar {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+        }
+
+        .subtitulo {
+            font-size: 1rem;
+            color: #b0b0b0;
+            margin-bottom: 35px;
+            font-style: italic;
+        }
+
+        .galeria {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            margin-bottom: 35px;
+        }
+
+        .foto {
+            width: 100%;
+            aspect-ratio: 1;
+            border-radius: 12px;
+            overflow: hidden;
+            background: #2a2a2a;
+            border: 1px solid rgba(255, 77, 108, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            transition: all 0.3s ease;
+        }
+
+        .foto:hover {
+            transform: scale(1.05);
+            border-color: #ff4d6d;
+            box-shadow: 0 0 15px rgba(255, 77, 108, 0.25);
+        }
+
+        .foto img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .tempo-juntos h2 {
+            font-size: 1.15rem;
+            color: #ff4d6d;
+            margin-bottom: 25px;
+            letter-spacing: 1px;
+        }
+
+        .contador, .contador-linha {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+            gap: 14px;
+            margin-bottom: 14px;
+        }
+
+        .bloco {
+            background: #2a2a2a;
+            border-radius: 12px;
+            padding: 18px 12px;
+            border: 1px solid rgba(255, 77, 108, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .bloco:hover {
+            border-color: #ff4d6d;
+            transform: translateY(-3px);
+        }
+
+        .valor {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #ff4d6d;
+        }
+
+        .rotulo {
+            font-size: 0.8rem;
+            color: #999;
+            text-transform: uppercase;
+            margin-top: 4px;
+        }
+
+        .coração-grande {
+            font-size: 3rem;
+            margin: 25px 0;
+            animation: batida 1s ease-in-out infinite;
+        }
+
+        @keyframes batida {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+
+        .frase {
+            margin-top: 35px;
+            font-size: 1rem;
+            color: #d0d0d0;
+            line-height: 1.8;
+        }
+
+        .frase span {
+            color: #ff4d6d;
+            font-weight: 600;
+        }
+
+        .data-inicio {
+            font-size: 0.9rem;
+            color: #888;
+            margin-top: 25px;
+        }
+
+        @media (max-width: 480px) {
+            .contador, .contador-linha {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            h1 { font-size: 1.6rem; }
+            .valor { font-size: 1.5rem; }
+            .foto-perfil { width: 150px; height: 150px; }
+            .container { padding: 35px 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+    
+        <div class="foto-perfil">
+            <img src="casal.jpg" alt="Nós dois juntos ❤️">
+        </div>
+
+        <h1>💕 Nossa História 💕</h1>
+        <p class="subtitulo">Cada segundo ao seu lado vale a pena ✨</p>
+
+        <div class="galeria">
+            <div class="foto">💑</div>
+            <div class="foto">💖</div>
+            <div class="foto">🌹</div>
+            <div class="foto">💍</div>
+            <div class="foto">🌅</div>
+            <div class="foto">🎬</div>
+        </div>
+
+        <div class="tempo-juntos">
+            <h2>Estamos juntos há</h2>
+            
+            <div class="contador">
+                <div class="bloco">
+                    <div class="valor" id="anos">0</div>
+                    <div class="rotulo">Anos</div>
+                </div>
+                <div class="bloco">
+                    <div class="valor" id="meses">0</div>
+                    <div class="rotulo">Meses</div>
+                </div>
+                <div class="bloco">
+                    <div class="valor" id="semanas">0</div>
+                    <div class="rotulo">Semanas</div>
+                </div>
+                <div class="bloco">
+                    <div class="valor" id="dias">0</div>
+                    <div class="rotulo">Dias</div>
+                </div>
+            </div>
+
+            <div class="contador-linha">
+                <div class="bloco">
+                    <div class="valor" id="horas">0</div>
+                    <div class="rotulo">Horas</div>
+                </div>
+                <div class="bloco">
+                    <div class="valor" id="minutos">0</div>
+                    <div class="rotulo">Minutos</div>
+                </div>
+                <div class="bloco">
+                    <div class="valor" id="segundos">0</div>
+                    <div class="rotulo">Segundos</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="coração-grande">❤️</div>
+
+        <p class="frase">
+            "E um dia eu disse: <span>sim, é você.</span><br>
+            E desde então, cada dia ao seu lado é uma <span>bênção.</span>" ✨
+        </p>
+
+        <p class="data-inicio">📅 Desde: <span id="data-inicio">01/01/2024</span></p>
+    </div>
+
+    <script>
+        // 📅! Formato: ano-mês-dia
+        const dataInicio = new Date('2025-11-03');
+
+        // Criar corações flutuando
+        function criarCoracoes() {
+            for (let i = 0; i < 15; i++) {
+                setTimeout(() => {
+                    const coracao = document.createElement('div');
+                    coracao.className = 'coração';
+                    coracao.innerHTML = ['❤️', '💕', '💖', '💗', '🌹'][Math.floor(Math.random() * 5)];
+                    coracao.style.left = Math.random() * 100 + '%';
+                    coracao.style.animationDelay = Math.random() * 8 + 's';
+                    coracao.style.fontSize = (Math.random() * 12 + 16) + 'px';
+                    document.body.appendChild(coracao);
+                    setTimeout(() => coracao.remove(), 8000);
+                }, i * 400);
+            }
+        }
+        criarCoracoes();
+        setInterval(criarCoracoes, 8000);
+
+        // Atualizar contador
+        function atualizarContador() {
+            const agora = new Date();
+            let anos = agora.getFullYear() - dataInicio.getFullYear();
+            let meses = agora.getMonth() - dataInicio.getMonth();
+            let dias = agora.getDate() - dataInicio.getDate();
+
+            if (dias < 0) {
+                meses--;
+                const ultimoDia = new Date(agora.getFullYear(), agora.getMonth(), 0).getDate();
+                dias += ultimoDia;
+            }
+            if (meses < 0) {
+                anos--;
+                meses += 12;
+            }
+
+            const semanas = Math.floor(dias / 7);
+            const diasSemana = dias % 7;
+
+            const totalSegundos = Math.floor((agora - dataInicio) / 1000);
+            const horas = Math.floor(totalSegundos / 3600) % 24;
+            const minutos = Math.floor(totalSegundos / 60) % 60;
+            const segundos = totalSegundos % 60;
+
+            document.getElementById('anos').textContent = anos;
+            document.getElementById('meses').textContent = meses;
+            document.getElementById('semanas').textContent = semanas;
+            document.getElementById('dias').textContent = diasSemana;
+            document.getElementById('horas').textContent = String(horas).padStart(2, '0');
+            document.getElementById('minutos').textContent = String(minutos).padStart(2, '0');
+            document.getElementById('segundos').textContent = String(segundos).padStart(2, '0');
+        }
+
+        atualizarContador();
+        setInterval(atualizarContador, 1000);
+
+        // Mostrar data formatada
+        document.getElementById('data-inicio').textContent = 
+            dataInicio.toLocaleDateString('pt-BR', {
+                day: 'numeric',
+                month: 'long',
+                year: 'numeric'
+            });
+    </script>
+</body>
+</html>
